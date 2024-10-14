@@ -34,13 +34,8 @@ try {
                 ],
                 [
                     'height' => 300,
-<<<<<<< HEAD
                     'baseQuality' => 95,
                     'gainmapQuality' => 80,
-=======
-                    'baseQuality' => 1,
-                    'gainmapQuality' => 1,
->>>>>>> v1.0.0
                     'fileName' => 'image-converted'
                 ]
             ],
