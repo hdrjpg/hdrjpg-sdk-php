@@ -1,0 +1,21 @@
+{
+    "name": "tin-cat/hdrjpg-sdk-php",
+    "description": "The official PHP SDK to convert high dynamic range photos into web-ready HDR files using the hdrjpg.com API.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "TinCat\\HdrjpgSdkPhp\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Loren",
+            "email": "loren@tin.cat"
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "guzzlehttp/guzzle": "^7.9"
+    }
+}
