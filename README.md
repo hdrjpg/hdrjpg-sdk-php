@@ -12,7 +12,7 @@ Each conversion allows for the creation of a custom combination of image sizes, 
 
 ```php
 use TinCat\HdrjpgSdkPhp\Client;
-$client = new Client('<your API key>');
+$client = new Client('iS1nrfLP7KSCkeVlb1hKUL39eyUHsjE+KnLwmh6j'); // Replace with your API Key
 $client->convert(
     'image.heic', // Complete path for your Source HDR image file
     [ // An array of variants
@@ -41,6 +41,8 @@ $client->convert(
 ## Advanced usage
 Conversion is internally a three steps process that can be leveraged individually to better suit your implementation workflow. If you need finer control over this process, see the file [examples/advanced-convert.php](examples/advanced-convert.php) for an example on how to perform the conversion steps separately.
 
+## Free testing API Key
+Visit [hdrjpg.com/documentation/free-api-key](https://hdrjpg.com/documentation/free-api-key) to get a free testing API Key.
 
 ## Requirements
 - PHP 7.4 or higher

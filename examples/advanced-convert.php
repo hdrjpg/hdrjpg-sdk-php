@@ -11,7 +11,7 @@ use TinCat\HdrjpgSdkPhp\Entity\Conversion;
 use TinCat\HdrjpgSdkPhp\Entity\ConversionFile;
 use TinCat\HdrjpgSdkPhp\Exception\ApiException;
 
-$client = new Client('<your API key>');
+$client = new Client('iS1nrfLP7KSCkeVlb1hKUL39eyUHsjE+KnLwmh6j'); // Replace with your API Key
 
 try {
 
