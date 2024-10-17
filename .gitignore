@@ -1,3 +1,4 @@
 /vendor/
 workspace.code-workspace
 examples/download
+examples/test.php

@@ -26,12 +26,7 @@ class ResponseBuilderConversionFile extends ResponseBuilder
             $conversionFile->failDescriptions = $data['failDescriptions'] ?: [];
             $conversionFile->completedDate = strtotime($data['completedDate'] ?: 0);
             $conversionFile->conversionTime = floatval($data['conversionTime']);
-            $conversionFile->outputFormat =
-                [
-                    'Jpeg' => ConversionFile::OUTPUT_FORMAT_JPEG,
-                    'Jxl' => ConversionFile::OUTPUT_FORMAT_JXL,
-                    'Avif' => ConversionFile::OUTPUT_FORMAT_AVIF
-                ][$data['outputFormat']];
+            $conversionFile->outputFormat = $data['outputFormat'];
             $conversionFile->outputImageFileName = $data['outputImageFileName'] ?: [];
             $conversionFile->conversionParameters = (new ResponseBuilderConversionParameters)->buildFromData($data['conversionParameters']);
 

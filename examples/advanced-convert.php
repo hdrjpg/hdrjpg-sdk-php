@@ -24,19 +24,21 @@ try {
             [
                 [
                     'width' => 1200,
-                    'quality' => 97
+                    'baseQuality' => 97,
+                    'gainmapQuality' => 80,
+                    'format' => 'jpeg-xt'
                 ],
                 [
                     'height' => 300,
                     'baseQuality' => 95,
-                    'gainmapQuality' => 80
+                    'format' => 'jpeg-xl'
+                ],
+                [
+                    'height' => 300,
+                    'baseQuality' => 95,
+                    'format' => 'avif'
                 ]
             ],
-            [
-                ConversionFile::OUTPUT_FORMAT_JPEG,
-                ConversionFile::OUTPUT_FORMAT_JXL,
-                ConversionFile::OUTPUT_FORMAT_AVIF
-            ]
         );
 
     echo 'File '.$conversion->sourceImageFileName.' Submitted for conversion with UUID '.$conversion->uuid."\n";

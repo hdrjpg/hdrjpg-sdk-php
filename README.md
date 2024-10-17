@@ -8,7 +8,7 @@ composer require tin-cat/hdrjpg-sdk-php
 ```
 
 ## Usage
-Each conversion allows for the creation of a custom combination of image sizes, qualities and formats. The supported source HDR image formats are <b>HEIC</b> and <b>EXR</b>. Supported HDR output formats are <b>JPEG</b> <i>(JPEG-XT)</i>, <b>JPEG-XL</b> and <b>AVIF</b>. All files retain HDR information after the conversion. See [hdrjpg.com](https://hdrjpg.com) for more information on compatibility and conversion options.
+Each conversion allows for the creation of a custom combination of image sizes, qualities and formats. The supported source HDR image formats are <b>HEIC</b> and <b>EXR</b>. Supported HDR output formats are <b>JPEG-XT</b>, <b>JPEG-XL</b> and <b>AVIF</b>. All files retain HDR information after the conversion. See [hdrjpg.com](https://hdrjpg.com) for more information on compatibility and conversion options.
 
 ```php
 use TinCat\HdrjpgSdkPhp\Client;
@@ -18,19 +18,21 @@ $client->convert(
     [ // An array of variants
         [ // Each variant defines the desired size and quality of the resulting image
             'width' => 1200,
-            'quality' => 97
+            'baseQuality' => 97,
+            'format' => 'jpeg-xt'
+        ],
+        [
+            'width' => 1200,
+            'baseQuality' => 97,
+            'format' => 'jpeg-xl'
         ],
         [
             'height' => 300,
             'baseQuality' => 95,
             'gainmapQuality' => 80,
-            'fileName' => 'image-converted'
+            'fileName' => 'image-converted',
+            'format' => 'avif'
         ]
-    ],
-    [ // Array of output formats. Files for all variants will be generated for all this formats
-        ConversionFile::OUTPUT_FORMAT_JPEG,
-        ConversionFile::OUTPUT_FORMAT_JXL,
-        ConversionFile::OUTPUT_FORMAT_AVIF
     ],
     '/tmp' // Output directory to save resulting files to
 );

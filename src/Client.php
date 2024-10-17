@@ -39,13 +39,11 @@ class Client
      * Submits a file for conversion
      * @param string $filePath
      * @param array $variants
-     * @param array $formats
      * @return Conversion
      */
     function submit(
         string $filePath,
-        array $variants = [],
-        array $formats = []
+        array $variants = []
     ): Conversion
     {
         return
@@ -54,61 +52,11 @@ class Client
                 'convert',
                 'POST',
                 [
-                    'variant' => $this->buildVariantQueryString($variants),
-                    'output' => $this->buildOutputFormatQueryString($formats)
+                    'variant' => json_encode($variants)
                 ],
                 [
                     'sourceHDRImage' => $filePath
                 ]
-            );
-    }
-
-    /**
-     * @param mixed $variants
-     * @return string A string that defines the specified $variants according to the `variant` API parameter syntax.
-     */
-    private function buildVariantQueryString(
-        array $variants
-    ): string
-    {
-        return
-            implode(
-                ',',
-                array_map(
-                    fn ($variant) =>
-                        ($variant['width'] ?? '').
-                        ($variant['height'] ?? false ? 'x'.$variant['height'] : '').
-                        ($variant['quality'] ?? false || $variant['baseQuality'] ?? false || $variant['gainmapQuality'] ?? false ?
-                            'q'.
-                            ($variant['baseQuality'] ?? $variant['quality']).
-                            ($variant['gainmapQuality'] ?? false ? '-'.$variant['gainmapQuality'] : '')
-                        : '').
-                        ($variant['fileName'] ?? false ? ';'.$variant['fileName'] : ''),
-                    $variants
-                )
-            );
-    }
-
-    /**
-     * @param int $format
-     * @return string A string that defines a specific output format according to the `output` API parameter syntax.
-     */
-    private function buildOutputFormatQueryString(
-        array $formats
-    ): string
-    {
-        return
-            implode(
-                ',',
-                array_map(
-                    fn ($format) =>
-                        [
-                            ConversionFile::OUTPUT_FORMAT_JPEG => 'jpg',
-                            ConversionFile::OUTPUT_FORMAT_JXL => 'jxl',
-                            ConversionFile::OUTPUT_FORMAT_AVIF => 'avif',
-                        ][$format],
-                    $formats
-                )
             );
     }
 
@@ -191,7 +139,6 @@ class Client
      * Submits a file for conversion
      * @param string $filePath
      * @param array $variants
-     * @param array $formats
      * @param string $destinationDirectory If not specified, the default system temp directory will be used.
      * @param callable $onProgress A function that will be called while the conversion is running each time the conversion state changes. The Conversion object will be passed to the function as the only parameter.
      * @return Conversion
@@ -199,7 +146,6 @@ class Client
     function convert(
         string $filePath,
         array $variants = [],
-        array $formats = [],
         string $destinationDirectory = '',
         callable $onProgress = null
     ): Conversion
@@ -207,8 +153,7 @@ class Client
         $conversion =
             $this->submit(
                 $filePath,
-                $variants,
-                $formats
+                $variants
             );
 
         while (true) {

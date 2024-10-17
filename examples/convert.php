@@ -30,19 +30,21 @@ try {
             [
                 [
                     'width' => 1200,
-                    'quality' => 97
+                    'baseQuality' => 97,
+                    'format' => 'jpeg-xt'
+                ],
+                [
+                    'width' => 1200,
+                    'baseQuality' => 97,
+                    'format' => 'jpeg-xl'
                 ],
                 [
                     'height' => 300,
                     'baseQuality' => 95,
                     'gainmapQuality' => 80,
-                    'fileName' => 'image-converted'
+                    'fileName' => 'image-converted',
+                    'format' => 'avif'
                 ]
-            ],
-            [
-                ConversionFile::OUTPUT_FORMAT_JPEG,
-                ConversionFile::OUTPUT_FORMAT_JXL,
-                ConversionFile::OUTPUT_FORMAT_AVIF
             ],
             $destinationDirectory,
             function ($conversion)
