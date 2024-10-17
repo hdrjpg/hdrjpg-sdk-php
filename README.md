@@ -14,22 +14,32 @@ Each conversion allows for the creation of a custom combination of image sizes, 
 use TinCat\HdrjpgSdkPhp\Client;
 $client = new Client('iS1nrfLP7KSCkeVlb1hKUL39eyUHsjE+KnLwmh6j'); // Replace with your API Key
 $client->convert(
-    'image.heic', // Complete path for your Source HDR image file
+    'example.heic', // Complete path for your Source HDR image file
     [ // An array of variants
-        [ // Each variant defines the desired size and quality of the resulting image
+        [ // Each variant defines the settings for each resulting image
             'width' => 1200,
-            'baseQuality' => 97,
+            'baseQuality' => 98,
+            'format' => 'jpeg-xt'
+        ],
+        [
+            'width' => 800,
+            'baseQuality' => 98,
+            'format' => 'jpeg-xt'
+        ],
+        [
+            'width' => 300,
+            'baseQuality' => 98,
+            'gainmapQuality' => 95,
             'format' => 'jpeg-xt'
         ],
         [
             'width' => 1200,
-            'baseQuality' => 97,
+            'baseQuality' => 98,
             'format' => 'jpeg-xl'
         ],
         [
             'height' => 300,
-            'baseQuality' => 95,
-            'gainmapQuality' => 80,
+            'baseQuality' => 98,
             'fileName' => 'image-converted',
             'format' => 'avif'
         ]
