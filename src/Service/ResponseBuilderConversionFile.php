@@ -24,7 +24,7 @@ class ResponseBuilderConversionFile extends ResponseBuilder
             $conversionFile->createdDate = strtotime($data['createdDate'] ?: 0);
             $conversionFile->failedDate = strtotime($data['failedDate'] ?: 0);
             $conversionFile->failDescriptions = $data['failDescriptions'] ?: [];
-            $conversionFile->developerFailDescriptions = $data['developerFailDescriptions'] ?: [];
+            $conversionFile->developerFailDescriptions = $data['developerFailDescriptions'] ?? [];
             $conversionFile->completedDate = strtotime($data['completedDate'] ?: 0);
             $conversionFile->conversionTime = floatval($data['conversionTime']);
             $conversionFile->outputFormat = $data['outputFormat'];
