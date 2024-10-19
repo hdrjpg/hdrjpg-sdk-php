@@ -37,6 +37,11 @@ try {
                     'height' => 300,
                     'baseQuality' => 95,
                     'format' => 'avif'
+                ],
+                [
+                    'height' => 300,
+                    'baseQuality' => 95,
+                    'format' => 'jpeg' // For convenience, you can also convert to non-HDR standard JPG format
                 ]
             ],
         );
