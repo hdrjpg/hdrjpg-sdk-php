@@ -15,6 +15,7 @@ class Conversion
     public int $createdDate;
     public int $failedDate;
     public array $failDescriptions;
+    public array $developerFailDescriptions;
     public int $completedDate;
     public int $deliveredDate;
     public int $deliveryExpirationDate;

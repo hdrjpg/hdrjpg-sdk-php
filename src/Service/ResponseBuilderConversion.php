@@ -26,6 +26,7 @@ class ResponseBuilderConversion extends ResponseBuilder
             $conversion->createdDate = strtotime($data['createdDate'] ?: 0);
             $conversion->failedDate = strtotime($data['failedDate'] ?: 0);
             $conversion->failDescriptions = $data['failDescriptions'] ?: [];
+            $conversion->developerFailDescriptions = $data['developerFailDescriptions'] ?? [];
             $conversion->completedDate = strtotime($data['completedDate'] ?: 0);
             $conversion->deliveredDate = strtotime($data['deliveredDate'] ?: 0);
             $conversion->deliveryExpirationDate = strtotime($data['deliveryExpirationDate'] ?: 0);
