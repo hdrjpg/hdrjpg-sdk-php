@@ -26,22 +26,32 @@ try {
                     'width' => 1200,
                     'baseQuality' => 97,
                     'gainmapQuality' => 80,
-                    'format' => 'jpeg-xt'
+                    'format' => 'jpeg-xt',
+                    'onSdr' => 'continue' // This allows the file to still be generated if the provided image is not HDR. Resulting file won't be HDR.
                 ],
                 [
                     'height' => 300,
                     'baseQuality' => 95,
-                    'format' => 'jpeg-xl'
+                    'format' => 'jpeg-xl',
+                    'onSdr' => 'continue'
                 ],
                 [
                     'height' => 300,
                     'baseQuality' => 95,
-                    'format' => 'avif'
+                    'format' => 'avif',
+                    'onSdr' => 'continue'
                 ],
                 [
                     'height' => 300,
                     'baseQuality' => 95,
-                    'format' => 'jpeg' // For convenience, you can also convert to non-HDR standard JPG format
+                    'format' => 'jpeg', // For convenience, you can also convert to non-HDR standard JPG format
+                    'onSdr' => 'continue'
+                ],
+                [
+                    'height' => 300,
+                    'baseQuality' => 95,
+                    'format' => 'jpeg',
+                    'onSdr' => 'continue'
                 ]
             ],
         );

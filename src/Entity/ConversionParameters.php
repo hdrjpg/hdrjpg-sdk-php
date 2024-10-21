@@ -9,4 +9,5 @@ class ConversionParameters
     public int $quality;
     public int $baseQuality;
     public int $gainmapQuality;
+    public string $onSdr;
 }
