@@ -55,7 +55,7 @@ class Client
                     'variant' => json_encode($variants)
                 ],
                 [
-                    'sourceHDRImage' => $filePath
+                    'sourceImage' => $filePath
                 ]
             );
     }
