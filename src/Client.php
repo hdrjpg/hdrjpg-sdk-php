@@ -8,6 +8,7 @@ use TinCat\HdrjpgSdkPhp\Provider\ApiProvider;
 use TinCat\HdrjpgSdkPhp\Entity\ConversionFile;
 use TinCat\HdrjpgSdkPhp\Service\ResponseBuilderFile;
 use TinCat\HdrjpgSdkPhp\Exception\ApiClientException;
+use TinCat\HdrjpgSdkPhp\Exception\ConversionFailedException;
 use TinCat\HdrjpgSdkPhp\Service\ResponseBuilderSingleConversion;
 
 class Client
@@ -141,20 +142,28 @@ class Client
      * @param array $variants
      * @param string $destinationDirectory If not specified, the default system temp directory will be used.
      * @param callable $onProgress A function that will be called while the conversion is running each time the conversion state changes. The Conversion object will be passed to the function as the only parameter.
+     * @param int $pollInterval The number of seconds to wait between calls to the API to obtain the status of the conversion.
      * @return Conversion
      */
     function convert(
         string $filePath,
         array $variants = [],
         string $destinationDirectory = '',
-        callable $onProgress = null
+        callable $onProgress = null,
+        int $pollInterval = 2,
     ): Conversion
     {
+        if ($pollInterval < 2) {
+            throw new ApiClientException('Please do not poll faster than 2 seconds');
+        }
+
         $conversion =
             $this->submit(
                 $filePath,
                 $variants
             );
+
+        $onProgress($conversion);
 
         while (true) {
 
@@ -170,14 +179,28 @@ class Client
                 break;
             }
 
-            sleep(2);
+            if ($updatedConversion->status === Conversion::STATUS_FAILED) {
+
+                $failDescriptions = [];
+                if ($updatedConversion->failDescriptions) {
+                    $failDescriptions = array_merge($failDescriptions, $updatedConversion->failDescriptions);
+                }
+
+                if ($updatedConversion->variants) {
+                    foreach ($updatedConversion->variants as $variant) {
+                        if ($variant->failDescriptions) {
+                            $failDescriptions = array_merge($failDescriptions, $variant->failDescriptions);
+                        }
+                    }
+                }
+
+                throw new ConversionFailedException('Conversion failed'.($failDescriptions ? '('.implode(' / ', $failDescriptions).')' : null));
+            }
+
+            sleep($pollInterval);
         }
 
         $this->downloadConversionResultFiles($conversion->uuid, $destinationDirectory);
-
-        if ($onProgress) {
-            $onProgress($conversion);
-        }
 
         return $conversion;
     }

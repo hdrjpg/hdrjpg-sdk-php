@@ -72,9 +72,15 @@ try {
                 Conversion::STATUS_READY => 'Ready',
                 Conversion::STATUS_DELIVERED => 'Delivered',
             ][$conversion->status].
+            ' / Step: '.
+            ([
+                Conversion::STEP_PRIMING => 'Priming',
+                Conversion::STEP_PREPARING => 'Preparing',
+                Conversion::STEP_CONVERTING => 'Converting',
+                Conversion::STEP_FINALIZING => 'Finalizing'
+            ][$conversion->step] ?? '-').
             ' / progress '.$conversion->progressPercentage.'%'.
             ' / conversion time '.($conversion->conversionTime).'s'.
-            ' / estimated '.($conversion->estimatedRemainingTime).'s remaining'.
             "\n";
 
         if ($conversion->status === Conversion::STATUS_READY) {

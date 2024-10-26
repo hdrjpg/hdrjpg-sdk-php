@@ -23,6 +23,13 @@ class ResponseBuilderConversion extends ResponseBuilder
                     'Ready' => Conversion::STATUS_READY,
                     'Delivered' => Conversion::STATUS_DELIVERED,
                 ][$data['status']];
+            $conversion->step =
+                ([
+                    'Priming' => Conversion::STEP_PRIMING,
+                    'Preparing' => Conversion::STEP_PREPARING,
+                    'Converting' => Conversion::STEP_CONVERTING,
+                    'Finalizing' => Conversion::STEP_FINALIZING
+                ][$data['step']] ?? null);
             $conversion->createdDate = strtotime($data['createdDate'] ?: 0);
             $conversion->failedDate = strtotime($data['failedDate'] ?: 0);
             $conversion->failDescriptions = $data['failDescriptions'] ?: [];

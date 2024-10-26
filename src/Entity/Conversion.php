@@ -10,8 +10,14 @@ class Conversion
     const STATUS_READY = 3;
     const STATUS_DELIVERED = 4;
 
+    const STEP_PRIMING = 0;
+    const STEP_PREPARING = 1;
+    const STEP_CONVERTING = 2;
+    const STEP_FINALIZING = 3;
+
     public string $uuid;
     public int $status;
+    public ?int $step;
     public int $createdDate;
     public int $failedDate;
     public array $failDescriptions;
@@ -34,6 +40,10 @@ class Conversion
     {
         return
             $conversion->status !== $this->status
+            ||
+            $conversion->step !== $this->step
+            ||
+            $conversion->estimatedRemainingTime !== $this->estimatedRemainingTime
             ||
             $conversion->progressPercentage !== $this->progressPercentage;
     }
