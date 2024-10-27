@@ -7,7 +7,8 @@ class ConversionFile
     const STATUS_PENDING = 0;
     const STATUS_RUNNING = 1;
     const STATUS_FAILED = 2;
-    const STATUS_COMPLETED = 3;
+    const STATUS_SKIPPED = 3;
+    const STATUS_COMPLETED = 4;
 
     public string $uuid;
     public int $status;

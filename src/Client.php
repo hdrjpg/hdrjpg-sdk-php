@@ -150,7 +150,7 @@ class Client
         array $variants = [],
         string $destinationDirectory = '',
         callable $onProgress = null,
-        int $pollInterval = 2,
+        int $pollInterval = 2
     ): Conversion
     {
         if ($pollInterval < 2) {
@@ -187,14 +187,20 @@ class Client
                 }
 
                 if ($updatedConversion->variants) {
-                    foreach ($updatedConversion->variants as $variant) {
+                    foreach ($updatedConversion->variants as $variantKey => $variant) {
                         if ($variant->failDescriptions) {
-                            $failDescriptions = array_merge($failDescriptions, $variant->failDescriptions);
+                            $failDescriptions = array_merge(
+                                $failDescriptions,
+                                array_map(
+                                    fn ($failDescriptions) => 'Variant #'.$variantKey.': '.$failDescriptions.' ('.$variant->outputImageFileName.')',
+                                    $variant->failDescriptions
+                                )
+                            );
                         }
                     }
                 }
 
-                throw new ConversionFailedException('Conversion failed'.($failDescriptions ? '('.implode(' / ', $failDescriptions).')' : null));
+                throw new ConversionFailedException('Conversion failed'.($failDescriptions ? ' ('.implode(' / ', $failDescriptions).')' : null));
             }
 
             sleep($pollInterval);

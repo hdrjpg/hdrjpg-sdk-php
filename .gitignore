@@ -2,3 +2,4 @@
 workspace.code-workspace
 examples/download
 examples/test.php
+examples/test_files

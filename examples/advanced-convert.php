@@ -8,7 +8,6 @@ require_once '../vendor/autoload.php';
 
 use TinCat\HdrjpgSdkPhp\Client;
 use TinCat\HdrjpgSdkPhp\Entity\Conversion;
-use TinCat\HdrjpgSdkPhp\Entity\ConversionFile;
 use TinCat\HdrjpgSdkPhp\Exception\ApiException;
 
 $client = new Client('iS1nrfLP7KSCkeVlb1hKUL39eyUHsjE+KnLwmh6j'); // Replace with your API Key
@@ -83,7 +82,11 @@ try {
             ' / conversion time '.($conversion->conversionTime).'s'.
             "\n";
 
-        if ($conversion->status === Conversion::STATUS_READY) {
+        if (
+            $conversion->status === Conversion::STATUS_READY
+            ||
+            $conversion->status === Conversion::STATUS_FAILED
+        ) {
             break;
         }
 
