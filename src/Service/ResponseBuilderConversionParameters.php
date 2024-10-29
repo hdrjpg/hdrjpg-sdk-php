@@ -15,6 +15,7 @@ class ResponseBuilderConversionParameters extends ResponseBuilder
             $conversionParameters = new ConversionParameters;
             $conversionParameters->width = intval($data['width']);
             $conversionParameters->height = intval($data['height']);
+            $conversionParameters->extrapolate = boolval($data['extrapolate']);
             $conversionParameters->baseQuality = intval($data['baseQuality']);
             $conversionParameters->gainmapQuality = intval($data['gainmapQuality']);
             $conversionParameters->onSdr = $data['onSdr'];
