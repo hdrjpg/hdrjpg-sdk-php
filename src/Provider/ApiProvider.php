@@ -100,11 +100,17 @@ class ApiProvider
                 $options['sink'] = $destinationFile;
             }
 
+            // To allow for a low guzzle version compatibility, we silent deprecation warnings here that might trigger when using PHP version 8 and guzzlehttp version 6.*
+            $previousErrorReporting = error_reporting();
+            error_reporting($previousErrorReporting & ~E_DEPRECATED);
+
             $response = $client->request(
                 $method,
                 $this->getEndpointUrl($endpoint),
                 $options
             );
+
+            error_reporting($previousErrorReporting);
 
 
         } catch (BadResponseException $e) {
