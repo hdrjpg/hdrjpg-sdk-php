@@ -105,6 +105,7 @@ try {
     echo 'ZIP file downloaded to '.$filePath."\n";
 
 } catch (ApiException $e) {
+
     echo 'API Error: '.$e->getMessage()."\n";
 
 }

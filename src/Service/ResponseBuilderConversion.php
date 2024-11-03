@@ -41,6 +41,8 @@ class ResponseBuilderConversion extends ResponseBuilder
             $conversion->conversionTime = floatval($data['conversionTime'] ?? 0);
             $conversion->progressPercentage = floatval($data['progressPercentage'] ?? 0);
             $conversion->estimatedRemainingTime = intval($data['estimatedRemainingTime'] ?? 0);
+            $conversion->blurHash = $data['blurHash'] ?: null;
+            $conversion->averageColor = $data['averageColor'] ?: null;
 
             if ($data['variants']) {
                 foreach ($data['variants'] as $variantData) {

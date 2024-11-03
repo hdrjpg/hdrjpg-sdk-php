@@ -29,6 +29,8 @@ class Conversion
     public float $progressPercentage;
     public int $conversionTime;
     public int $estimatedRemainingTime;
+    public ?string $blurHash;
+    public ?string $averageColor;
     public array $variants;
 
     public function isCanBeDownloaded(): bool
