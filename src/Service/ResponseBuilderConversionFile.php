@@ -28,7 +28,8 @@ class ResponseBuilderConversionFile extends ResponseBuilder
             $conversionFile->developerFailDescriptions = $data['developerFailDescriptions'] ?? [];
             $conversionFile->completedDate = strtotime($data['completedDate'] ?: 0);
             $conversionFile->conversionTime = floatval($data['conversionTime']);
-            $conversionFile->outputFormat = $data['outputFormat'];
+            $conversionFile->fileName = $data['fileName'];
+            $conversionFile->format = $data['format'];
             $conversionFile->outputImageFileName = $data['outputImageFileName'] ?: [];
             $conversionFile->conversionParameters = (new ResponseBuilderConversionParameters)->buildFromData($data['conversionParameters']);
 

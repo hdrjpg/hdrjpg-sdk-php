@@ -18,7 +18,8 @@ class ConversionFile
     public array $developerFailDescriptions;
     public int $completedDate;
     public float $conversionTime;
-    public string $outputFormat;
+    public string $fileName;
+    public string $format;
     public string $outputImageFileName;
     public ConversionParameters $conversionParameters;
 }
