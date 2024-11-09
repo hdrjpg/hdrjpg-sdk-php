@@ -21,5 +21,11 @@ class ConversionFile
     public string $fileName;
     public string $format;
     public string $outputImageFileName;
+    public int $outputImageFileSize;
+    public int $outputImageWidth;
+    public int $outputImageHeight;
+    public float $outputImageMegapixels;
+    public float $outputImageAspectRatio;
+    public float $outputImageCompressionRatio;
     public ConversionParameters $conversionParameters;
 }

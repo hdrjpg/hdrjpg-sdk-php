@@ -31,6 +31,12 @@ class ResponseBuilderConversionFile extends ResponseBuilder
             $conversionFile->fileName = $data['fileName'];
             $conversionFile->format = $data['format'];
             $conversionFile->outputImageFileName = $data['outputImageFileName'] ?: [];
+            $conversionFile->outputImageFileSize = intval($data['outputImageFileSize']);
+            $conversionFile->outputImageWidth = intval($data['outputImageWidth']);
+            $conversionFile->outputImageHeight = intval($data['outputImageHeight']);
+            $conversionFile->outputImageMegapixels = floatval($data['outputImageMegapixels']);
+            $conversionFile->outputImageAspectRatio = floatval($data['outputImageAspectRatio']);
+            $conversionFile->outputImageCompressionRatio = floatval($data['outputImageCompressionRatio']);
             $conversionFile->conversionParameters = (new ResponseBuilderConversionParameters)->buildFromData($data['conversionParameters']);
 
             return $conversionFile;
