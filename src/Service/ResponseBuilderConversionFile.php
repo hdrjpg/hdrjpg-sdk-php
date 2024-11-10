@@ -17,6 +17,7 @@ class ResponseBuilderConversionFile extends ResponseBuilder
             $conversionFile->status =
                 [
                     'Pending' => ConversionFile::STATUS_PENDING,
+                    'Prepared' => ConversionFile::STATUS_PREPARED,
                     'Running' => ConversionFile::STATUS_RUNNING,
                     'Skipped' => ConversionFile::STATUS_SKIPPED,
                     'Failed' => ConversionFile::STATUS_FAILED,

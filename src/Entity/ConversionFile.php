@@ -5,10 +5,11 @@ namespace TinCat\HdrjpgSdkPhp\Entity;
 class ConversionFile
 {
     const STATUS_PENDING = 0;
-    const STATUS_RUNNING = 1;
-    const STATUS_FAILED = 2;
-    const STATUS_SKIPPED = 3;
-    const STATUS_COMPLETED = 4;
+    const STATUS_PREPARED = 1;
+    const STATUS_RUNNING = 2;
+    const STATUS_FAILED = 3;
+    const STATUS_SKIPPED = 4;
+    const STATUS_COMPLETED = 5;
 
     public string $uuid;
     public int $status;
