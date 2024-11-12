@@ -16,6 +16,7 @@ class ConversionFile
     public int $createdDate;
     public int $failedDate;
     public array $failDescriptions;
+    public array $warningDescriptions;
     public array $developerFailDescriptions;
     public int $completedDate;
     public float $conversionTime;
