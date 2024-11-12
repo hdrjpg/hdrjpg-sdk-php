@@ -62,6 +62,26 @@ class Client
     }
 
     /**
+     * Deletes a conversion.
+     * @param string $conversionUuid The conversion UUID
+     * @return Conversion
+     */
+    function deleteConversion(
+        string $conversionUuid
+    ): Conversion
+    {
+        return
+            $this->apiProvider->query(
+                new ResponseBuilderSingleConversion,
+                'delete',
+                'DELETE',
+                [
+                    'conversionUuid' => $conversionUuid
+                ],
+            );
+    }
+
+    /**
      * Gets information about a conversion
      * @param string $conversionUuid The conversion UUID
      * @return Conversion
@@ -177,6 +197,14 @@ class Client
 
             if ($updatedConversion->isCanBeDownloaded()) {
                 break;
+            }
+
+            if ($updatedConversion->status === Conversion::STATUS_CANCELLED) {
+                throw new ConversionFailedException('Conversion was cancelled');
+            }
+
+            if ($updatedConversion->status === Conversion::STATUS_DELETED) {
+                throw new ConversionFailedException('Conversion was deleted');
             }
 
             if ($updatedConversion->status === Conversion::STATUS_FAILED) {

@@ -3,11 +3,12 @@
 namespace TinCat\HdrjpgSdkPhp\Provider;
 
 use Exception;
-use GuzzleHttp\Exception\BadResponseException;
 use GuzzleHttp\Psr7;
+use GuzzleHttp\Exception\BadResponseException;
 use TinCat\HdrjpgSdkPhp\Exception\ApiException;
 use TinCat\HdrjpgSdkPhp\Exception\ApiClientException;
 use TinCat\HdrjpgSdkPhp\Exception\ApiTimeoutException;
+use TinCat\HdrjpgSdkPhp\Exception\ApiNotFoundException;
 use TinCat\HdrjpgSdkPhp\Exception\ApiResponseException;
 use TinCat\HdrjpgSdkPhp\Exception\ApiBadRequestException;
 use TinCat\HdrjpgSdkPhp\Exception\ApiConnectionException;
@@ -120,6 +121,8 @@ class ApiProvider
                     throw new ApiUnauthorizedException($responseData['errorDescription']);
                 case 400:
                     throw new ApiBadRequestException($responseData['errorDescription']);
+                case 404:
+                    throw new ApiNotFoundException($responseData['errorDescription']);
                 case 408:
                     throw new ApiTimeoutException($responseData['errorDescription']);
                 case 500:
