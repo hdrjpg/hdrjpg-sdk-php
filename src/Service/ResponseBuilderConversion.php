@@ -22,6 +22,8 @@ class ResponseBuilderConversion extends ResponseBuilder
                     'Failed' => Conversion::STATUS_FAILED,
                     'Ready' => Conversion::STATUS_READY,
                     'Delivered' => Conversion::STATUS_DELIVERED,
+                    'Cancelled' => Conversion::STATUS_CANCELLED,
+                    'Deleted' => Conversion::STATUS_DELETED,
                 ][$data['status']];
             $conversion->step =
                 ([

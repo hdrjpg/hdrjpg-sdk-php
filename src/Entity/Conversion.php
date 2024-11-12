@@ -9,6 +9,8 @@ class Conversion
     const STATUS_FAILED = 2;
     const STATUS_READY = 3;
     const STATUS_DELIVERED = 4;
+    const STATUS_CANCELLED = 5;
+    const STATUS_DELETED = 6;
 
     const STEP_PRIMING = 0;
     const STEP_PREPARING = 1;

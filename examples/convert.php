@@ -57,6 +57,8 @@ try {
                         Conversion::STATUS_FAILED => 'Failed',
                         Conversion::STATUS_READY => 'Ready',
                         Conversion::STATUS_DELIVERED => 'Delivered',
+                        Conversion::STATUS_CANCELLED => 'Cancelled',
+                        Conversion::STATUS_DELETED => 'Deleted'
                     ][$conversion->status].
                     ' / Step: '.
                     ([
