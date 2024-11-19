@@ -67,7 +67,12 @@ class ApiProvider
             [
                 'headers' => $this->getRequestHeaders(),
                 'allow_redirects' => false, // As a security measure in case the domain is ever hijacked
-                'connect_timeout' => 10
+                'connect_timeout' => 10,
+                'curl' => [
+                    CURLOPT_TCP_KEEPALIVE => 1,
+                    CURLOPT_TCP_KEEPIDLE => 60,
+                    CURLOPT_TCP_KEEPINTVL => 10,
+                ]
             ];
     }
 
