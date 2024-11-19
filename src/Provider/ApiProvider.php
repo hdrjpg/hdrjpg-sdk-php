@@ -16,6 +16,8 @@ use TinCat\HdrjpgSdkPhp\Exception\ApiUnauthorizedException;
 
 class ApiProvider
 {
+    const VERSION = '1.0.29';
+
     private string $apiKey;
     private string $hostIsHttps;
     private string $hostName;
@@ -39,10 +41,22 @@ class ApiProvider
         return ($this->hostIsHttps ? 'https' : 'http').'://'.$this->hostName.(!in_array($this->hostPort, [80, 443]) ? ':'.$this->hostPort : null).'/'.$endpoint;
     }
 
+    private function getUserAgent(): string
+    {
+        return sprintf(
+            '%s/%s (%s) PHP/%s',
+            'hdrjpg-sdk-php',
+            self::VERSION,
+            'https://hdrjpg.com',
+            PHP_VERSION
+        );
+    }
+
     private function getRequestHeaders(): array
     {
         return
             [
+                'User-Agent' => $this->getUserAgent(),
                 'api-key' => $this->apiKey
             ];
     }
