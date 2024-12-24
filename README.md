@@ -4,7 +4,7 @@ The official PHP SDK to convert high dynamic range photos into web-ready HDR fil
 ## Install
 
 ```bash
-composer require tin-cat/hdrjpg-sdk-php
+composer require hdrjpg/hdrjpg-sdk-php
 ```
 
 ## Usage
