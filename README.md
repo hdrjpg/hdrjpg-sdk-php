@@ -8,7 +8,7 @@ composer require hdrjpg/hdrjpg-sdk-php
 ```
 
 ## Usage
-Each conversion allows for the creation of a custom combination of image sizes, qualities and formats. The supported source HDR image formats are <b>HEIC</b> and <b>EXR</b>. Supported HDR output formats are <b>JPEG-XT</b>, <b>JPEG-XL</b> and <b>AVIF</b>. All files retain HDR information after the conversion. See [hdrjpg.com](https://hdrjpg.com) for more information on compatibility and conversion options.
+Each conversion allows for the creation of a custom combination of image sizes, qualities and formats. The supported source HDR image formats are <b>HEIC</b> and <b>EXR</b>. Supported HDR output formats are <b>JPEG-XT</b>, <b>JPEG-XL</b>, <b>AVIF</b> and <b>MP4</b>. All files retain HDR information after the conversion. See [hdrjpg.com](https://hdrjpg.com) for more information on compatibility and conversion options.
 
 ```php
 use TinCat\HdrjpgSdkPhp\Client;
@@ -59,7 +59,7 @@ $client->convert(
 Conversion is internally a three steps process that can be leveraged individually to better suit your implementation workflow. If you need finer control over this process, see the file [examples/advanced-convert.php](examples/advanced-convert.php) for an example on how to perform the conversion steps separately.
 
 ## Free testing API Key
-Visit [hdrjpg.com/documentation/free-api-key](https://hdrjpg.com/documentation/free-api-key) to get a free testing API Key.
+Visit [hdrjpg.com/documentation/testing-api-key](https://hdrjpg.com/documentation/testing-api-key) to get a free testing API Key.
 
 ## Requirements
 - PHP 7.4 or higher
