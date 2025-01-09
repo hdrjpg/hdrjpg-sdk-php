@@ -42,6 +42,11 @@ $client->convert(
             'baseQuality' => 98,
             'fileName' => 'image-converted',
             'format' => 'avif'
+        ],
+        [
+            'height' => 300,
+            'baseQuality' => 98,
+            'format' => 'mp4'
         ]
     ],
     '/tmp' // Output directory to save resulting files to

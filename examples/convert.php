@@ -44,6 +44,11 @@ try {
                     'gainmapQuality' => 80,
                     'fileName' => 'image-converted',
                     'format' => 'avif'
+                ],
+                [
+                    'height' => 300,
+                    'baseQuality' => 95,
+                    'format' => 'mp4'
                 ]
             ],
             $destinationDirectory,
