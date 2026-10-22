@@ -169,7 +169,7 @@ class Client
         string $filePath,
         array $variants = [],
         string $destinationDirectory = '',
-        callable $onProgress = null,
+        ?callable $onProgress = null,
         int $pollInterval = 2
     ): Conversion
     {
@@ -183,7 +183,9 @@ class Client
                 $variants
             );
 
-        $onProgress($conversion);
+        if ($onProgress) {
+            $onProgress($conversion);
+        }
 
         while (true) {
 

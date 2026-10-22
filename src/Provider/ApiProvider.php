@@ -16,7 +16,7 @@ use TinCat\HdrjpgSdkPhp\Exception\ApiUnauthorizedException;
 
 class ApiProvider
 {
-    const VERSION = '1.0.29';
+    const VERSION = '1.0.32';
 
     private string $apiKey;
     private string $hostIsHttps;

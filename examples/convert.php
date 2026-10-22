@@ -11,7 +11,7 @@ use TinCat\HdrjpgSdkPhp\Entity\Conversion;
 use TinCat\HdrjpgSdkPhp\Entity\ConversionFile;
 use TinCat\HdrjpgSdkPhp\Exception\ApiException;
 
-$client = new Client('iS1nrfLP7KSCkeVlb1hKUL39eyUHsjE+KnLwmh6j');
+$client = new Client('YOUR_API_KEY');
 
 $destinationDirectory = './download';
 
