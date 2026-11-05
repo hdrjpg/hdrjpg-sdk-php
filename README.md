@@ -8,7 +8,11 @@ composer require hdrjpg/hdrjpg-sdk-php
 ```
 
 ## Usage
-Each conversion allows for the creation of a custom combination of image sizes, qualities and formats. The supported source HDR image formats are <b>HEIC</b> (Apple), <b>JPG</b> (Android Ultra HDR and other gain map JPEGs) and <b>EXR</b>. Supported HDR output formats are <b>JPEG-XT</b>, <b>JPEG-XL</b>, <b>AVIF</b> and <b>MP4</b>. All files retain HDR information after the conversion. See [hdrjpg.com](https://hdrjpg.com) for more information on compatibility and conversion options.
+Each conversion allows for the creation of a custom combination of image sizes, qualities and formats. The supported source HDR image formats are <b>HEIC</b> (Apple), <b>JPG</b> (Android Ultra HDR and other gain map JPEGs) and <b>EXR</b>. Supported HDR output formats are <b>JPEG-XT</b>, <b>JPEG-XL</b>, <b>AVIF</b>, <b>MP4</b> (H.264) and <b>MP4 HEVC</b> (format code `mp4-hevc`). All files retain HDR information after the conversion.
+
+`mp4-hevc` is a 10-bit HEVC (H.265) HDR10 video. It has smoother gradients and more accurate color than `mp4`, but not every browser can play HEVC. Its files end in `.hevc.mp4`, for example `photo_1800xq95.hevc.mp4`. Request both `mp4` and `mp4-hevc` so every browser gets a video it can play.
+
+A free account allows up to 6 variants per conversion. A paid account allows up to 15. See [hdrjpg.com](https://hdrjpg.com) for more information on compatibility and conversion options.
 
 ```php
 use TinCat\HdrjpgSdkPhp\Client;
@@ -18,11 +22,6 @@ $client->convert(
     [ // An array of variants
         [ // Each variant defines the settings for each resulting image
             'width' => 1200,
-            'baseQuality' => 98,
-            'format' => 'jpeg-xt'
-        ],
-        [
-            'width' => 800,
             'baseQuality' => 98,
             'format' => 'jpeg-xt'
         ],
@@ -47,6 +46,11 @@ $client->convert(
             'height' => 300,
             'baseQuality' => 98,
             'format' => 'mp4'
+        ],
+        [
+            'height' => 300,
+            'baseQuality' => 98,
+            'format' => 'mp4-hevc'
         ]
     ],
     '/tmp' // Output directory to save resulting files to

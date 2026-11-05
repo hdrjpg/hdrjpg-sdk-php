@@ -49,6 +49,11 @@ try {
                     'height' => 300,
                     'baseQuality' => 95,
                     'format' => 'mp4'
+                ],
+                [
+                    'height' => 300,
+                    'baseQuality' => 95,
+                    'format' => 'mp4-hevc' // 10-bit HEVC HDR video, saved as a .hevc.mp4 file
                 ]
             ],
             $destinationDirectory,
